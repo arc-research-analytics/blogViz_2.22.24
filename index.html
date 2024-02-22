@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <canvas id="myChart"></canvas>
     <select
       id="dataSelector"
       style="
@@ -18,6 +19,7 @@
         font-family: sans-serif;
         padding: 10px;
         cursor: default;
+        margin-top: 20px;
       "
       onmouseover="this.style.cursor='pointer'; this.style.backgroundColor='darkgray'; "
       onmouseout="this.style.cursor='default'; this.style.backgroundColor='lightgray'; "
@@ -25,7 +27,6 @@
       <option value="salesHome">Sales - Home</option>
       <option value="salesOffice">Sales - Office</option>
     </select>
-    <canvas id="myChart"></canvas>
 
     <script>
       // Data from Excel table
