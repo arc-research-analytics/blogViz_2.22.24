@@ -13,10 +13,14 @@
         border-radius: 4px;
         background-color: lightgray;
         color: black;
-        padding: 7px;
+        text-align: center;
         font-weight: 800;
-        font-family: monospace;
+        font-family: sans-serif;
+        padding: 10px;
+        cursor: default;
       "
+      onmouseover="this.style.cursor='pointer'; this.style.backgroundColor='darkgray'; "
+      onmouseout="this.style.cursor='default'; this.style.backgroundColor='lightgray'; "
     >
       <option value="salesHome">Sales - Home</option>
       <option value="salesOffice">Sales - Office</option>
