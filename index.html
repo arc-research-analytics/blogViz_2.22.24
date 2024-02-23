@@ -28,27 +28,61 @@
     >
       <option value="shareFirms">Share of Firms</option>
       <option value="shareEmployees">Share of Employees</option>
-      <option value="sharePayroll">Share of Annual Payroll ($1,000)</option>
+      <option value="sharePayroll">Share of Annual Payroll</option>
     </select>
 
     <script>
       // Data from Excel table
       const data = {
-        labels: ["Snickers", "Twix", "Reeces", "M&Ms"], // NAICS industries
+        labels: [
+          "Construction",
+          "Manufacturing",
+          ["Wholesale", "trade"],
+          ["Transportation", "& warehousing"],
+          "Information",
+          ["Finance", "& insurance"],
+          ["Real estate &", "rental and leasing"],
+          ["Prof., sci.,", "& tech. services"],
+          ["Management of", "companies & enterprises"],
+          ["Admin. and support", "& waste mgmt. services"],
+          ["Health care", "& social assistance"],
+          ["Arts, entetainment", "& recreation"],
+          ["Accommodation", "& food services"],
+          "Other services",
+          "Not classified",
+        ], // NAICS industries
         shareFirms: {
-          // number of firms
-          National: [0.5, 0.4, 0.7, 0.12], // national
-          Metro: [0.9, 0.2, 0.6, 0.11], // metro
+          // share of firms
+          National: [
+            1.34, 0.87, 1.0, 5.56, 2.2, 2.14, 1.75, 2.64, 0.58, 3.43, 6.73,
+            3.77, 1.62, 3.08, 5.15,
+          ],
+          Metro: [
+            4.2, 2.6, 2.4, 19.9, 7.7, 9.0, 5.7, 8.6, 1.7, 12.2, 18.7, 12.1, 6.7,
+            8.6, 20.8,
+          ],
         },
         shareEmployees: {
-          // number of employees
-          National: [0.6, 0.7, 0.1, 0.3], // national
-          Metro: [0.2, 0.2, 0.9, 0.5], // metro
+          // share of employees
+          National: [
+            0.73, 0.26, 0.28, 1.67, 0.46, 0.23, 0.91, 1.31, 0.09, 2.0, 2.65,
+            0.79, 1.19, 1.94, 3.29,
+          ],
+          Metro: [
+            1.4, 0.8, 0.4, 3.4, 1.1, 1.7, 1.1, 3.3, 0.0, 5.4, 7.2, 1.4, 4.3,
+            3.8, 15.1,
+          ],
         },
         sharePayroll: {
-          // annual payroll
-          National: [0.3, 0.6, 0.5, 0.8], // national
-          Metro: [0.1, 0.4, 0.7, 0.2], // metro
+          // share of annual payroll
+          National: [
+            0.57, 0.19, 0.19, 0.91, 0.29, 0.12, 0.56, 0.92, 0.05, 1.33, 1.41,
+            2.42, 1.02, 1.6, 3.7,
+          ],
+          Metro: [
+            0.9, 0.7, 0.2, 1.5, 0.7, 0.6, 0.4, 1.7, 0.0, 2.3, 3.7, 2.7, 4.7,
+            4.2, 26.3,
+          ],
         },
       };
 
@@ -85,6 +119,9 @@
             },
             tooltip: {
               callbacks: {
+                title: (context) => {
+                  return context[0].label.replaceAll(",", " ");
+                },
                 label: function (tooltipItem) {
                   const label = tooltipItem.dataset.label; // Data series name
                   const value = tooltipItem.formattedValue; // Percentage value
