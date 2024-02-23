@@ -26,26 +26,26 @@
       onmouseover="this.style.cursor='pointer'; this.style.backgroundColor='darkgray'; "
       onmouseout="this.style.cursor='default'; this.style.backgroundColor='lightgray'; "
     >
-      <option value="salesHome">Sales - Home</option>
-      <option value="salesOffice">Sales - Office</option>
-      <option value="salesSchool">Sales - School</option>
+      <option value="shareFirms">Share of Firms</option>
+      <option value="shareEmployees">Share of Employees</option>
+      <option value="sharePayroll">Share of Annual Payroll ($1,000)</option>
     </select>
 
     <script>
       // Data from Excel table
       const data = {
         labels: ["Snickers", "Twix", "Reeces", "M&Ms"], // NAICS industries
-        salesHome: {
+        shareFirms: {
           // number of firms
           National: [0.5, 0.4, 0.7, 0.12], // national
           Metro: [0.9, 0.2, 0.6, 0.11], // metro
         },
-        salesOffice: {
+        shareEmployees: {
           // number of employees
           National: [0.6, 0.7, 0.1, 0.3], // national
           Metro: [0.2, 0.2, 0.9, 0.5], // metro
         },
-        salesSchool: {
+        sharePayroll: {
           // annual payroll
           National: [0.3, 0.6, 0.5, 0.8], // national
           Metro: [0.1, 0.4, 0.7, 0.2], // metro
@@ -61,12 +61,12 @@
           datasets: [
             {
               label: "National",
-              data: data.salesHome.National, // Initial data
+              data: data.shareFirms.National, // Initial data
               backgroundColor: "rgb(255, 99, 132)",
             },
             {
               label: "Metro Atlanta",
-              data: data.salesHome.Metro, // Initial data
+              data: data.shareFirms.Metro, // Initial data
               backgroundColor: "rgb(54, 162, 235)",
             },
           ],
@@ -106,6 +106,11 @@
             x: {
               grid: {
                 display: false,
+              },
+              ticks: {
+                callback: function (value, index, ticks) {
+                  return value + "%";
+                },
               },
             },
           },
