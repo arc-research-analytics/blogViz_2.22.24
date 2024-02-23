@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" style="margin-top: 20px"></canvas>
     <select
       id="dataSelector"
       style="
@@ -34,8 +34,14 @@
       // Data from Excel table
       const data = {
         labels: ["Snickers", "Twix", "Reeces", "M&Ms"],
-        salesHome: [5, 4, 7, 12],
-        salesOffice: [6, 7, 1, 3],
+        salesHome: {
+          Bob: [5, 4, 7, 12],
+          Steve: [9, 2, 6, 11],
+        },
+        salesOffice: {
+          Bob: [6, 7, 1, 3],
+          Steve: [2, 2, 9, 5],
+        },
       };
 
       // Initialize Chart.js
@@ -46,16 +52,21 @@
           labels: data.labels,
           datasets: [
             {
-              // label: "Sales",
-              data: data.salesHome, // Initial data
+              label: "Bob",
+              data: data.salesHome.Bob, // Initial data
               backgroundColor: "rgba(255, 99, 132, 0.2)",
+            },
+            {
+              label: "Steve",
+              data: data.salesHome.Steve, // Initial data
+              backgroundColor: "rgba(54, 162, 235, 0.2)",
             },
           ],
         },
         options: {
           plugins: {
             legend: {
-              display: false,
+              display: true,
             },
           },
           scales: {
@@ -82,7 +93,11 @@
         .getElementById("dataSelector")
         .addEventListener("change", function () {
           const selectedValue = this.value;
-          myChart.data.datasets[0].data = data[selectedValue];
+          const bobData = data[selectedValue].Bob;
+          const steveData = data[selectedValue].Steve;
+
+          myChart.data.datasets[0].data = bobData;
+          myChart.data.datasets[1].data = steveData;
           myChart.update();
         });
     </script>
