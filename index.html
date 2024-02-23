@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <div style="height: 700px">
+    <div style="height: 650px">
       <canvas id="myChart"></canvas>
     </div>
     <select
@@ -45,11 +45,11 @@
           "Information",
           ["Finance", "& insurance"],
           ["Real estate &", "rental and leasing"],
-          ["Professional, scientific,", "& tech services"],
+          ["Professional/scientific", "& tech services"],
           ["Management of", "companies & enterprises"],
           ["Admin. and support", "& waste mgmt. services"],
           ["Health care", "& social assistance"],
-          ["Arts, entetainment", "& recreation"],
+          ["Arts/entertainment", "& recreation"],
           ["Accommodation", "& food services"],
           "Other services",
           "Not classified",
@@ -127,6 +127,12 @@
               },
             },
             tooltip: {
+              titleFont: {
+                size: 20,
+              },
+              bodyFont: {
+                size: 16,
+              },
               callbacks: {
                 title: (context) => {
                   return context[0].label.replaceAll(",", " ");
