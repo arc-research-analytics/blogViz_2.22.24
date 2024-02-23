@@ -7,7 +7,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <canvas id="myChart" style="height: 200px"></canvas>
+    <div style="height: 800px">
+      <canvas id="myChart"></canvas>
+    </div>
     <select
       id="dataSelector"
       style="
@@ -109,6 +111,8 @@
         options: {
           // bar chart orientation (this makes it a vertical bar chart)
           indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             legend: {
               display: true,
