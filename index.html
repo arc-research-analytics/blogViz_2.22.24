@@ -37,18 +37,18 @@
         labels: ["Snickers", "Twix", "Reeces", "M&Ms"], // NAICS industries
         salesHome: {
           // number of firms
-          National: [5, 4, 7, 12], // national
-          Metro: [9, 2, 6, 11], // metro
+          National: [0.5, 0.4, 0.7, 0.12], // national
+          Metro: [0.9, 0.2, 0.6, 0.11], // metro
         },
         salesOffice: {
           // number of employees
-          National: [6, 7, 1, 3], // national
-          Metro: [2, 2, 9, 5], // metro
+          National: [0.6, 0.7, 0.1, 0.3], // national
+          Metro: [0.2, 0.2, 0.9, 0.5], // metro
         },
         salesSchool: {
           // annual payroll
-          National: [3, 6, 5, 8], // national
-          Metro: [1, 4, 7, 2], // metro
+          National: [0.3, 0.6, 0.5, 0.8], // national
+          Metro: [0.1, 0.4, 0.7, 0.2], // metro
         },
       };
 
@@ -80,6 +80,15 @@
               labels: {
                 font: {
                   size: 16,
+                },
+              },
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tooltipItem) {
+                  const label = tooltipItem.dataset.label; // Data series name
+                  const value = tooltipItem.formattedValue; // Percentage value
+                  return `${label}: ${value}%`; // Formatted tooltip content
                 },
               },
             },
