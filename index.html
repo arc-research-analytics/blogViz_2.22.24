@@ -77,10 +77,11 @@
       // Charts.js visualization
       const ctx = document.getElementById("myChart").getContext("2d");
       const titleMappings = {
-        shareFirms: "Share of Black-Owned Firms as % of Total",
-        shareEmployees: "Share of Employees of Black-Owned Firms as % of Total",
+        shareFirms: "Black-Owned Firms By Sector as % of Total",
+        shareEmployees:
+          "Employees of Black-Owned Firms By Sector as % of Total",
         sharePayroll:
-          "Share of Annual Payroll of Black-Owned Firms as % of Total",
+          "Annual Payroll of Black-Owned Firms By Sector as % of Total",
       };
       const myChart = new Chart(ctx, {
         type: "bar",
