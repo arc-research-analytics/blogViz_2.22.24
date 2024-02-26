@@ -4,31 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Include Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div style="height: 625px">
+    <div>
       <canvas id="myChart"></canvas>
     </div>
-    <select
-      id="dataSelector"
-      style="
-        border: none;
-        border-radius: 4px;
-        display: block;
-        margin: 0 auto;
-        color: white;
-        background-color: #6c6f6d;
-        text-align: center;
-        font-weight: 800;
-        font-family: sans-serif;
-        padding: 10px;
-        cursor: default;
-        margin-top: 20px;
-      "
-      onmouseover="this.style.cursor='pointer'; this.style.backgroundColor='#8d908e'; "
-      onmouseout="this.style.cursor='default'; this.style.backgroundColor='#6c6f6d'; "
-    >
+    <select id="dataSelector">
       <option value="shareFirms">Share of Firms</option>
       <option value="shareEmployees">Share of Employees</option>
       <option value="sharePayroll">Share of Annual Payroll</option>
@@ -160,7 +145,18 @@
               },
               padding: {
                 top: 10,
-                bottom: 10,
+                bottom: 5,
+              },
+            },
+            subtitle: {
+              display: true,
+              text: "Isolate a series by clicking on the legend below",
+              font: {
+                size: 18,
+                style: "italic",
+              },
+              padding: {
+                bottom: 15,
               },
             },
           },
