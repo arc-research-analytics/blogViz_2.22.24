@@ -89,8 +89,14 @@
         },
       };
 
-      // Initialize Chart.js
+      // Charts.js visualization
       const ctx = document.getElementById("myChart").getContext("2d");
+      const titleMappings = {
+        shareFirms: "Share of Black-Owned Firms as % of Total",
+        shareEmployees: "Share of Employees of Black-Owned Firms as % of Total",
+        sharePayroll:
+          "Share of Annual Payroll of Black-Owned Firms as % of Total",
+      };
       const myChart = new Chart(ctx, {
         type: "bar",
         data: {
@@ -98,14 +104,14 @@
           datasets: [
             {
               label: "National",
-              data: data.shareFirms.National, // Initial data
+              data: data.shareFirms.National, // Initial data - BO firms
               backgroundColor: "rgb(255, 99, 132)",
               barPercentage: 1, // the blue and red bars touch within each category
               categoryPercentage: 0.7, // higher values mean the bars between categories get closer
             },
             {
               label: "Metro Atlanta",
-              data: data.shareFirms.Metro, // Initial data
+              data: data.shareFirms.Metro, // Initial data - BO firms
               backgroundColor: "rgb(54, 162, 235)",
               barPercentage: 1,
               categoryPercentage: 0.7,
@@ -145,6 +151,18 @@
                 },
               },
             },
+            title: {
+              display: true,
+              text: "Share of Black-Owned Firms as % of Total",
+              font: {
+                weight: "bold",
+                size: 20,
+              },
+              padding: {
+                top: 10,
+                bottom: 10,
+              },
+            },
           },
           scales: {
             y: {
@@ -180,11 +198,13 @@
         .getElementById("dataSelector")
         .addEventListener("change", function () {
           const selectedValue = this.value;
+          const selectedTitle = titleMappings[selectedValue];
           const nationalData = data[selectedValue].National;
           const metroData = data[selectedValue].Metro;
 
           myChart.data.datasets[0].data = nationalData;
           myChart.data.datasets[1].data = metroData;
+          myChart.options.plugins.title.text = selectedTitle;
           myChart.update();
         });
     </script>
